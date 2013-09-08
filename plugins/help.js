@@ -2,6 +2,7 @@ exports.help = {
     about: '',
     help: '',
     enabled: 1,
+    aliases: ['?'],
     run: function (params, to, plugins) {
         var answer = '';
         if (!params.length) {

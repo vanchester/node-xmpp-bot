@@ -12,6 +12,12 @@ fs.readdirSync("./plugins").forEach(function(file) {
         }
 
         plugins[name] = p[name];
+
+        if (p[name].aliases) {
+            for (var i in p[name].aliases) {
+                plugins[p[name].aliases[i]] = p[name];
+            }
+        }
     }
 });
 
