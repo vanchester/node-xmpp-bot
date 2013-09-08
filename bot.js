@@ -45,7 +45,17 @@ cl.on('stanza', function(stanza) {
         var command = params.shift();
         console.log('Command ' + command);
 
+        if (typeof plugins[command] == 'object' && plugins[command].max_access) {
+            var jid = new xmpp.JID(stanza.attrs.from);
+
+            if (config.adminJID.indexOf(jid.user + '@' + jid.domain) == -1) {
+                console.log('Access denied for user ' + jid.user + '@' + jid.domain);
+                return;
+            }
+        }
+
         if (typeof plugins[command] != 'object') {
+            // check for admin commands
             if (typeof plugins['unknown'] == 'object') {
                 console.log('Unknown command');
                 command = 'unknown';

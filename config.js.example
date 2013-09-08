@@ -1,2 +1,6 @@
-exports.jid  = 'bot@jabber.ru';
-exports.password = 'password';
+module.exports = {
+	jid: 'bot@jabber.ru',
+	password = 'password',
+
+	adminJID: ['admin@jabber.ru']
+};

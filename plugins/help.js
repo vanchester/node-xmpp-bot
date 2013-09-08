@@ -5,15 +5,15 @@ exports.help = {
     enabled: 1,
     aliases: ['?'],
     run: function (params, stanza, plugins) {
-        var answer = '';
+        var answer = '\nList of available commands:\n';
         if (!params.length) {
             for (var name in plugins) {
-                if (plugins[name].name != name) {
+                if (plugins[name].name != name || plugins[name].max_access) {
                     continue;
                 }
 
                 if (plugins[name].about) {
-                    answer += '[' + name + '] - ' + plugins[name].about + '\n';
+                    answer += '\n[' + name + '] - ' + plugins[name].about;
                 }
             }
         } else {
