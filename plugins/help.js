@@ -6,7 +6,6 @@ exports.help = {
     aliases: ['?'],
     run: function (params, stanza, plugins) {
         var answer = '';
-        console.log(plugins);
         if (!params.length) {
             for (var name in plugins) {
                 if (plugins[name].name != name) {
