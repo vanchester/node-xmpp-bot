@@ -1,0 +1,2 @@
+exports.jid  = 'bot@jabber.ru';
+exports.password = 'password';

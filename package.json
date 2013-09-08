@@ -1,0 +1,36 @@
+{
+  "name": "node-xmpp-bot",
+  "version": "0.0.1",
+  "description": "Simple XMPP-bot",
+  "author": {
+    "name": "vanchester"
+  },
+  "dependencies": {
+    "node-xmpp": ">= 0.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vanchester/node-xmpp-bot.git"
+  },
+  "homepage": "http://github.com/vanchester/node-xmpp-bot",
+  "bugs": {
+    "url": "http://github.com/vanchester/node-xmpp-bot/issues"
+  },
+  "maintainers": [
+    {
+      "name": "vanchester",
+      "email": "admin@vanchester.ru",
+      "url": "http://vanchester.ru/"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "engine": "node >= 0.4.0",
+  "readme": "# node-xmpp-bot\n",
+  "readmeFilename": "README.md",
+  "_id": "node-xmpp-bot@0.0.1",
+  "_from": "node-xmpp-bot@"
+}
