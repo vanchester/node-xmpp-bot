@@ -1,14 +1,20 @@
 exports.help = {
+    name: 'help',
     about: '',
     help: '',
     enabled: 1,
     aliases: ['?'],
     run: function (params, to, plugins) {
         var answer = '';
+        console.log(plugins);
         if (!params.length) {
             for (var name in plugins) {
+                if (plugins[name].name != name) {
+                    continue;
+                }
+
                 if (plugins[name].about) {
-                    answer += name + ' ' + plugins[name].about + '\n';
+                    answer += '[' + name + '] - ' + plugins[name].about + '\n';
                 }
             }
         } else {
