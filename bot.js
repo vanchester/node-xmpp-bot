@@ -60,13 +60,18 @@ cl.on('stanza', function(stanza) {
             return;
         }
 
-        stanza.c('body').t(plugins[command].run(params, stanza.attrs.from, plugins));
-
         // Swap addresses...
         stanza.attrs.to = stanza.attrs.from;
         delete stanza.attrs.from;
-        // and send back.
-        cl.send(stanza);
+
+        var body = plugins[command].run(params, stanza, plugins, cl);
+
+        if (body) {
+            stanza.c('body').t(body);
+
+            // and send back.
+            cl.send(stanza);
+        }
     }
 });
 

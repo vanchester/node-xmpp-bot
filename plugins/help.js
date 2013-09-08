@@ -4,7 +4,7 @@ exports.help = {
     help: '',
     enabled: 1,
     aliases: ['?'],
-    run: function (params, to, plugins) {
+    run: function (params, stanza, plugins) {
         var answer = '';
         console.log(plugins);
         if (!params.length) {
