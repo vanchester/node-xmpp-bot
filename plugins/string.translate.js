@@ -14,8 +14,8 @@ exports.translate = {
         }
 
         str = params.join(' ');
-        var onlyEn = str.replace(/[^A-Za-z]/, '');
-        var onlyRu = str.replace(/[^А-Яа-я]/, '');
+        var onlyEn = 'En: ' + str.replace(/[^A-Za-z]/g, '');
+        var onlyRu = 'Ru: ' + str.replace(/[^А-Яа-я]/g, '');
         opts = {
             sl: onlyEn.length > onlyRu.length ? 'en' : 'ru',
             tl: onlyEn.length > onlyRu.length ? 'ru' : 'en',
@@ -30,9 +30,6 @@ exports.translate = {
             ssel: 0,
             q: str
         };
-
-        console.log(opts);
-        console.log(querystring.stringify(opts));
 
         var url = 'http://translate.google.ru/translate_a/t?' + querystring.stringify(opts);
         request.get(url, function(err, response, body){
