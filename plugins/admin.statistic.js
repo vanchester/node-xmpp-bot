@@ -1,4 +1,6 @@
-var os = require('os');
+var os = require('os'),
+    process = require('process'),
+    util = require('util');
 
 exports.stat = {
     name: 'stat',
@@ -8,12 +10,14 @@ exports.stat = {
     enabled: 1,
     max_access: 1,
     aliases: ['stat', 'os'],
-    run: function(params, stanza, plugins, client) {
+    run: function() {
         var message = 'System information for ' + os.hostname() + '\n';
         message += 'Uptime: ' + secondsToString(os.uptime()) + '\n';
         message += 'Load average: ' + loadAvgToString(os.loadavg()) + '\n';
         message += 'Memory: ' + bytesToSize(os.freemem()) + ' / ' + bytesToSize(os.totalmem()) + '\n';
-
+        message += '\nBot uptime: ' + secondsToString(process.uptime()) + '\n';
+        message += 'Bot memory usage: ' + bytesToSize(util.inspect(process.memoryUsage().rss)) + '\n';
+        message += '\nVersions: ' + JSON.stringify(process.versions) + '\n';
         return message;
     }
 };
