@@ -5,17 +5,27 @@ exports.help = {
     enabled: 1,
     aliases: ['?'],
     run: function (params, stanza, plugins) {
+        var config = require('../config.js');
+        var xmpp = require('node-xmpp');
+
+        var isAdmin = false;
+        var jid = new xmpp.JID(stanza.attrs.to);
+
+        if (config.adminJID && config.adminJID.indexOf(jid.user + '@' + jid.domain) != -1) {
+            isAdmin = true;
+        }
+
         var answer = '\nList of available commands:\n';
         if (!params.length) {
-            var groups = getGroups(plugins);
-            var maxCommandLength = getMaxCommandLength(plugins);
+            var groups = getGroups(plugins, isAdmin);
+            var maxCommandLength = getMaxCommandLength(plugins, isAdmin);
 
             for (var i in groups) {
                 answer += '\n' + groups[i] + ':\n';
 
                 for (var name in plugins) {
                     if (plugins[name].group != groups[i] || plugins[name].name != name
-                        || plugins[name].max_access || !plugins[name].about)
+                        || (plugins[name].max_access && !isAdmin) || !plugins[name].about)
                     {
                         continue;
                     }
@@ -29,7 +39,7 @@ exports.help = {
             // show commands without group
             for (var name in plugins) {
                 if (plugins[name].group || plugins[name].name != name
-                    || plugins[name].max_access || !plugins[name].about)
+                    || (plugins[name].max_access && !isAdmin) || !plugins[name].about)
                 {
                     continue;
                 }
@@ -50,12 +60,12 @@ exports.help = {
     }
 };
 
-function getGroups(plugins)
+function getGroups(plugins, isAdmin)
 {
     var groups = [];
     for (var name in plugins) {
         var group = plugins[name].group;
-        if (!group || plugins[name].name != name || plugins[name].max_access) {
+        if (!group || plugins[name].name != name || (plugins[name].max_access && !isAdmin)) {
             continue;
         }
 
@@ -67,12 +77,12 @@ function getGroups(plugins)
     return groups;
 }
 
-function getMaxCommandLength(plugins)
+function getMaxCommandLength(plugins, isAdmin)
 {
     var len = 0;
     for (var name in plugins) {
         var group = plugins[name].group;
-        if (group == '' || plugins[name].name != name || plugins[name].max_access) {
+        if (group == '' || plugins[name].name != name || (plugins[name].max_access && !isAdmin)) {
             continue;
         }
 
