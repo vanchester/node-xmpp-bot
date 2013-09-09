@@ -4,7 +4,7 @@ exports.shorturl = {
     about: 'URL shortener',
     help: 'shorturl <STRING>',
     enabled: 1,
-    aliases: ['short', 'urlshort', 'gl'],
+    aliases: ['short', 'urlshort', 'gl', 'url'],
     run: function(params, stanza, plugins, client) {
         if (params[0]) {
             var config = require('../config.js');
