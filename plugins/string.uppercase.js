@@ -1,5 +1,6 @@
 exports.ucase = {
     name: 'ucase',
+    group: 'String operations',
     about: 'Change all letters of string to upper case',
     help: 'ucase <STRING>',
     enabled: 1,

@@ -2,6 +2,7 @@ var fs = require('fs');
 
 exports.load = {
     name: 'load',
+    group: 'Administration',
     about: 'Load/reload plugin',
     help: 'load <FILE-NAME>',
     enabled: 1,

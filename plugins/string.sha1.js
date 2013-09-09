@@ -2,6 +2,7 @@ var crypto = require('crypto');
 
 exports.sha1 = {
     name: 'sha1',
+    group: 'String operations',
     about: 'SHA1 summ of string',
     help: 'sha1 <STRING>',
     enabled: 1,

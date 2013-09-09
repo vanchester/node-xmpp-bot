@@ -2,6 +2,7 @@ var crypto = require('crypto');
 
 exports.crc32 = {
     name: 'crc32',
+    group: 'String operations',
     about: 'CRC32 summ of string',
     help: 'crc32 <STRING>',
     enabled: 1,

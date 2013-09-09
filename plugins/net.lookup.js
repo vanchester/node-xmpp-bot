@@ -2,6 +2,7 @@ var dns = require('dns');
 
 exports.lookup = {
     name: 'lookup',
+    group: 'Net',
     about: 'DNS lookup',
     help: 'lookup <DOMAIN>',
     enabled: 1,

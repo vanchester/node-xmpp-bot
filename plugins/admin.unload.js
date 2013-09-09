@@ -1,5 +1,6 @@
 exports.unload = {
     name: 'unload',
+    group: 'Administration',
     about: 'Unload plugin',
     help: 'unload <PLUGIN-NAME>',
     enabled: 1,

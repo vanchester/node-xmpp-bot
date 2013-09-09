@@ -1,5 +1,6 @@
 exports.rmtag = {
     name: 'rmtag',
+    group: 'String operations',
     about: 'Remove HTML-tags from string',
     help: 'rmtag <STRING>',
     enabled: 1,

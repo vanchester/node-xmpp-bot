@@ -1,5 +1,6 @@
 exports.b64enc = {
     name: 'b64enc',
+    group: 'String operations',
     about: 'Encode string to base64',
     help: 'strlen <STRING>',
     enabled: 1,

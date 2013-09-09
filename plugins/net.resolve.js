@@ -2,6 +2,7 @@ var dns = require('dns');
 
 exports.resolve = {
     name: 'resolve',
+    group: 'Net',
     about: 'Resolve domain records',
     help: 'resolve <DOMAIN>',
     enabled: 1,

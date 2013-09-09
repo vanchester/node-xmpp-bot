@@ -1,5 +1,6 @@
 exports.b64dec = {
     name: 'b64dec',
+    group: 'String operations',
     about: 'Decode base64 to string',
     help: 'b64dec <CODE>',
     enabled: 1,

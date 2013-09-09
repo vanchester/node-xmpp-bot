@@ -2,6 +2,7 @@ var crypto = require('crypto');
 
 exports.md5 = {
     name: 'md5',
+    group: 'String operations',
     about: 'MD5 summ of string',
     help: 'md5 <STRING>',
     enabled: 1,

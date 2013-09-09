@@ -4,6 +4,7 @@ var request = require('request'),
 
 exports.translate = {
     name: 'translate',
+    group: 'String operations',
     about: 'Translate string between Russian and Enlish',
     help: 'translate <STRING>',
     enabled: 1,

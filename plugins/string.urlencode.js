@@ -1,5 +1,6 @@
 exports.urlenc = {
     name: 'urlenc',
+    group: 'String operations',
     about: 'Encode string to URL',
     help: 'urlenc <STRING>',
     enabled: 1,

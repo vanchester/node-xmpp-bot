@@ -1,5 +1,6 @@
 exports.strlen = {
     name: 'strlen',
+    group: 'String operations',
     about: 'String length',
     help: 'strlen <STRING>',
     enabled: 1,

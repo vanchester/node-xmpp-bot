@@ -1,5 +1,6 @@
 exports.reverse = {
     name: 'reverse',
+    group: 'String operations',
     about: 'Reverse string',
     help: 'reverse <STRING>',
     enabled: 1,

@@ -8,6 +8,7 @@ function translite(str){
 
 exports.translit = {
     name: 'translit',
+    group: 'String operations',
     about: 'Translit russian letters in string',
     help: 'translit <STRING>',
     enabled: 1,

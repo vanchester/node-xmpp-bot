@@ -1,5 +1,6 @@
 exports.stamp = {
     name: 'stamp',
+    group: 'Time tools',
     about: 'Convert timestamp to date or show current timestamp',
     help: 'timestamp [<UNIX-time>]',
     enabled: 1,

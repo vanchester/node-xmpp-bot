@@ -1,5 +1,6 @@
 exports.lcase = {
     name: 'lcase',
+    group: 'String operations',
     about: 'Change all letters of string to lower case',
     help: 'lcase <STRING>',
     enabled: 1,

@@ -2,6 +2,7 @@ var spawn = require('child_process').spawn;
 
 exports.ping = {
     name: 'ping',
+    group: 'Net',
     about: 'Ping host or IP',
     help: 'ping <HOST-OR-IP>',
     enabled: 1,
