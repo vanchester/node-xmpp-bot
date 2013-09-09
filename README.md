@@ -72,18 +72,22 @@ You can extend bot commands with create plugins. All plugins is in directory `pl
     max_access: 0,
     aliases: ['command1', 'command2']
     run: function(params, stanza, plugins, client) {
-        return 'See you!';
+        return 'Hello!';
     }
 };
  ```
 
 where
-* `exports.command` - Command name to use in message
-* `name: 'command'` - Original name of command
-* `group: 'Group name'` - Group of command in list of commands when **help** sended
-* `about: 'Simple command'` - Short description for list of commands when **help** sended
-* `help: 'command <PARAMS>'` - Hint when sended **help command**
-* `enabled: 1` - If 0, command will be disabled
-* `max_access: 0` - If 1, command will be available only for admin's JIDs (**adminJID** in **config.js**)
-* `aliases: ['command1', 'command2']` - Additional aliases of command, which can be used instead of original name of command
-* `run: function (params, stanza, plugins, client) {}` - Logic of plugin. **Params** contain as array all sended words, **stanza** is the object of answer, **plugins** is container of all loaded plugins, **client** - XMPP client
+* `exports.command` - command name to use in message
+* `name: 'command'` - original name of command
+* `group: 'Group name'` - group of command in list of commands when **help** sended
+* `about: 'Simple command'` - short description for list of commands when **help** sended
+* `help: 'command <PARAMS>'` - hint when sended **help command**
+* `enabled: 1` - if 0, command will be disabled
+* `max_access: 0` - if 1, command will be available only for admin's JIDs (**adminJID** in **config.js**)
+* `aliases: ['command1', 'command2']` - additional aliases of command, which can be used instead of original name of command
+* `run: function (params, stanza, plugins, client) {}` - logic of plugin. **Params** contain all sended words (as array), **stanza** is the object of answer, **plugins** is the container of all loaded plugins, **client** - XMPP client object
+
+**Run** can return string or null. If it return the string, this string will be send to recipient. 
+Also, message can be sent via **stranza** from plugin's body: `stranza.c('body').t('Hello!'); client.send(stranza);`. 
+See all examples in plugins files
