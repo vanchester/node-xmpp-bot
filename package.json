@@ -6,7 +6,8 @@
     "name": "vanchester"
   },
   "dependencies": {
-    "node-xmpp": ">= 0.6.1"
+    "node-xmpp": ">= 0.6.1",
+    "request": ">= 2.27.0"
   },
   "repository": {
     "type": "git",
