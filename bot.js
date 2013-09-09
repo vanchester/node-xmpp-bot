@@ -71,7 +71,13 @@ cl.on('stanza', function(stanza) {
         stanza.attrs.to = stanza.attrs.from;
         delete stanza.attrs.from;
 
-        var body = plugins[command].run(params, stanza, plugins, cl);
+        var body = null;
+        try {
+            body = plugins[command].run(params, stanza, plugins, cl);
+        } catch (e) {
+            console.log(e);
+            body = 'There is an error. Try again later';
+        }
 
         if (body) {
             stanza.c('body').t(body);
