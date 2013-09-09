@@ -21,9 +21,6 @@ fs.readdirSync("./plugins").forEach(function(file) {
     }
 });
 
-console.log('Loaded plugins:');
-console.log(plugins);
-
 cl.on('online', function() {
     console.log("Connected successfully");
     cl.send(new xmpp.Element('presence', {}).
