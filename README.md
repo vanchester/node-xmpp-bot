@@ -33,6 +33,11 @@ Administration:
  [update]      - Update bot code from repository
  [exit]        - Close bot
 
+Math:
+ [calc]        - Calculate string
+ [roman]       - Convert numbers between roman and arabic systems
+ [convert]     - Convert number between number systems
+
 Net:
  [lookup]      - DNS lookup
  [ping]        - Ping host or IP
