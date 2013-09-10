@@ -70,6 +70,7 @@ cl.on('stanza', function(stanza) {
         // Swap addresses...
         stanza.attrs.to = stanza.attrs.from;
         delete stanza.attrs.from;
+        stanza.remove('body');
 
         var body = null;
         try {
