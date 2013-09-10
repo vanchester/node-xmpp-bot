@@ -11,11 +11,11 @@ fs.readdirSync("./plugins").forEach(function(file) {
             continue;
         }
 
-        plugins[name] = p[name];
+        plugins[name.toLowerCase()] = p[name];
 
         if (p[name].aliases) {
             for (var i in p[name].aliases) {
-                plugins[p[name].aliases[i]] = p[name];
+                plugins[p[name].aliases[i].toLowerCase()] = p[name];
             }
         }
     }
@@ -39,7 +39,7 @@ cl.on('stanza', function(stanza) {
         console.log('Message from ' + stanza.attrs.from + ': ' + message);
 
         var params = message.split(' ');
-        var command = params.shift();
+        var command = params.shift().toLowerCase();
         console.log('Command ' + command);
 
         if (typeof plugins[command] == 'object' && plugins[command].max_access) {
