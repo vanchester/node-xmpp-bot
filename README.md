@@ -1,7 +1,7 @@
 node-xmpp-bot
 =============
 
-XMPP bot on Node.js, based on [node-xmpp](https://github.com/astro/node-xmpp), extended with plugins
+XMPP bot on Node.js, based on [node-xmpp](https://github.com/astro/node-xmpp)
 
 Requirements
 ------------
@@ -17,7 +17,7 @@ Installation
  ```
 2. run command `npm install` for download required extensions
 3. copy **config.js.example** to **config.js** and edit it with your JID and password
-4. run command `./run.sh` for run bot
+4. run command `./run.sh` to run the bot
 
 Usage
 -----
@@ -89,10 +89,10 @@ where
 * `about: 'Simple command'` - short description for list of commands when **help** sended
 * `help: 'command <PARAMS>'` - hint when sended **help command**
 * `enabled: 1` - if 0, command will be disabled
-* `max_access: 0` - if 1, command will be available only for admin's JIDs (**adminJID** in **config.js**)
+* `max_access: 0` - if 1, command will be available only for admin's JIDs (param **adminJID** in **config.js**)
 * `aliases: ['command1', 'command2']` - additional aliases of command, which can be used instead of original name of command
 * `run: function (params, stanza, plugins, client) {}` - logic of plugin. **Params** contain all sended words (as array), **stanza** is the object of answer, **plugins** is the container of all loaded plugins, **client** - XMPP client object
 
-**Run** can return string or null. If it return the string, this string will be send to recipient. 
+**Run** can return string or null. If it return the string, this string will be sent to recipient. 
 Also, message can be sent via **stranza** from plugin's body: `stranza.c('body').t('Hello!'); client.send(stranza);`. 
 See all examples in plugins files
