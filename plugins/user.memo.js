@@ -1,5 +1,6 @@
 var mongo = require('mongodb'),
-    MongoClient = mongo.MongoClient;
+    MongoClient = mongo.MongoClient,
+    xmpp = require('node-xmpp');
 
 exports.memo = {
     name: 'memo',
@@ -46,10 +47,13 @@ exports.memo = {
 
             var collection = db.collection('memo');
 
+            var jid = new xmpp.JID(stanza.attrs.to);
+
+            var userJID = jid.user + '@' + jid.domain;
             switch (params[0]) {
                 case 'add':
                 case 'a':
-                    collection.findOne({'jid': stanza.attrs.to, 'name': params[1]}, function (err, item) {
+                    collection.findOne({'jid': userJID, 'name': params[1]}, function (err, item) {
                         if (err) throw err;
 
                         if (item) {
@@ -58,7 +62,7 @@ exports.memo = {
                             return;
                         }
 
-                        collection.insert({'jid': stanza.attrs.to, 'name': params[1], 'message': params.slice(2).join(' ')}, {w: 1}, function (err, db) {
+                        collection.insert({'jid': userJID, 'name': params[1], 'message': params.slice(2).join(' ')}, {w: 1}, function (err, db) {
                             if (err) throw err;
 
                             stanza.c('body').t('Note "' + params[1] + '" saved');
@@ -69,7 +73,7 @@ exports.memo = {
                     break;
                 case 'del':
                 case 'd':
-                    collection.findOne({'jid': stanza.attrs.to, 'name': params[1]}, function (err, item) {
+                    collection.findOne({'jid': userJID, 'name': params[1]}, function (err, item) {
                         if (err) throw err;
 
                         if (!item) {
@@ -77,7 +81,7 @@ exports.memo = {
                             client.send(stanza);
                             return;
                         }
-                        collection.remove({'jid': stanza.attrs.to, 'name': params[1]}, function (err, removed) {
+                        collection.remove({'jid': userJID, 'name': params[1]}, function (err, removed) {
                             if (err) throw err;
 
                             stanza.c('body').t('Note with name "' + params[1] + '" deleted');
@@ -88,7 +92,7 @@ exports.memo = {
                 default:
                     if (params[0]) {
                         if (params[1]) {
-                            collection.findOne({'jid': stanza.attrs.to, 'name': params[0]}, function (err, item) {
+                            collection.findOne({'jid': userJID, 'name': params[0]}, function (err, item) {
                                 if (err) throw err;
 
                                 if (item) {
@@ -97,7 +101,7 @@ exports.memo = {
                                     return;
                                 }
 
-                                collection.insert({'jid': stanza.attrs.to, 'name': params[0], 'message': params.slice(1).join(' ')}, {w: 1}, function (err, db) {
+                                collection.insert({'jid': userJID, 'name': params[0], 'message': params.slice(1).join(' ')}, {w: 1}, function (err, db) {
                                     if (err) throw err;
 
                                     stanza.c('body').t('Note "' + params[0] + '" saved');
@@ -108,7 +112,7 @@ exports.memo = {
                             return;
                         }
 
-                        collection.findOne({'jid': stanza.attrs.to, 'name': params[0]}, function (err, item) {
+                        collection.findOne({'jid': userJID, 'name': params[0]}, function (err, item) {
                             if (err) throw err;
 
                             if (item) {
@@ -119,7 +123,7 @@ exports.memo = {
                             client.send(stanza);
                         });
                     } else {
-                        var cursor = collection.find({'jid': stanza.attrs.to});
+                        var cursor = collection.find({'jid': userJID});
 
                         cursor.toArray(function(err, items) {
                             if (err) throw err;
