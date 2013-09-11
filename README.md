@@ -92,6 +92,7 @@ where
 * `max_access: 0` - if 1, command will be available only for admin's JIDs (param **adminJID** in **config.js**)
 * `aliases: ['command1', 'command2']` - additional aliases of command, which can be used instead of original name of command
 * `run: function (params, stanza, plugins, client) {}` - logic of plugin. **Params** contain all sended words (as array), **stanza** is the object of answer, **plugins** is the container of all loaded plugins, **client** - XMPP client object
+* `afterLoad: function () {}` - logic called when plugin loaded to memory during bot start 
 
 **Run** can return string or null. If it return the string, this string will be sent to recipient. 
 Also, message can be sent via **stranza** from plugin's body: `stranza.c('body').t('Hello!'); client.send(stranza);`. 
