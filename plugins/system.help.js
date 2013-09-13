@@ -15,22 +15,37 @@ exports.help = {
             isAdmin = true;
         }
 
+        // @todo fix when user settings will be ready
+        var showNumbers = false;
+        if (params[0] == 'num') {
+            showNumbers = true;
+            params.shift();
+        }
+
         var answer = '\nList of available commands:\n';
         if (!params.length) {
             var groups = getGroups(plugins, isAdmin);
-            var maxCommandLength = getMaxCommandLength(plugins, isAdmin);
+            var maxCommandLength = !showNumbers ? getMaxCommandLength(plugins, isAdmin) : 0;
 
             for (var i in groups) {
                 answer += '\n' + groups[i] + ':\n';
 
                 for (var name in plugins) {
-                    if (plugins[name].group != groups[i] || plugins[name].name != name
-                        || (plugins[name].max_access && !isAdmin) || !plugins[name].about)
-                    {
+                    if (plugins[name].group != groups[i] || (plugins[name].max_access && !isAdmin) || !plugins[name].about) {
                         continue;
                     }
 
-                    var command = ' ' + padRight('[' + name + ']', maxCommandLength + 4);
+                    if (showNumbers) {
+                        if (!/^[\d]+$/.test(name)) {
+                            continue;
+                        }
+                    } else {
+                        if (plugins[name].name != name) {
+                            continue;
+                        }
+                    }
+
+                    var command = ' ' + padRight('[' + name + ']', maxCommandLength);
                     answer += command + ' - ' + plugins[name].about + '\n';
                 }
             }
@@ -38,13 +53,22 @@ exports.help = {
             answer += '\n';
             // show commands without group
             for (var name in plugins) {
-                if (plugins[name].group || plugins[name].name != name
-                    || (plugins[name].max_access && !isAdmin) || !plugins[name].about)
+                if (plugins[name].group || (plugins[name].max_access && !isAdmin) || !plugins[name].about)
                 {
                     continue;
                 }
 
-                var command = padRight('[' + name + ']', maxCommandLength + 4);
+                if (showNumbers) {
+                    if (!/^[\d]+$/.test(name)) {
+                        continue;
+                    }
+                } else {
+                    if (plugins[name].name != name) {
+                        continue;
+                    }
+                }
+
+                var command = padRight('[' + name + ']', maxCommandLength);
                 answer += command + ' - ' + plugins[name].about + '\n';
             }
 

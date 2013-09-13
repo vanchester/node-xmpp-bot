@@ -25,6 +25,8 @@ fs.readdirSync("./plugins").forEach(function(file) {
     }
 });
 
+addNumberAliases(plugins);
+
 cl.on('online', function() {
     console.log("Connected successfully");
     cl.send(new xmpp.Element('presence', {}).
@@ -96,3 +98,47 @@ cl.on('stanza', function(stanza) {
 cl.on('error', function(e) {
     console.error(e);
 });
+
+function addNumberAliases(plugins)
+{
+    var groups = getGroups(plugins);
+    var commandAliasNumber;
+    var groupAliasNumber = 0;
+    for (var n in groups) {
+        groupAliasNumber += 100;
+        commandAliasNumber = groupAliasNumber;
+        var group = groups[n];
+        for (var i in plugins) {
+            if (plugins[i].group == group && i == plugins[i].name) {
+                console.log(plugins[i].name);
+                plugins[++commandAliasNumber] = plugins[i];
+            }
+        }
+    }
+
+    // plugins without group
+    groupAliasNumber += 100;
+    commandAliasNumber = groupAliasNumber;
+    for (var i in plugins) {
+        if (!plugins[i].group && plugins[i].name == i) {
+            plugins[++commandAliasNumber] = plugins[i];
+        }
+    }
+}
+
+function getGroups(plugins, isAdmin)
+{
+    var groups = [];
+    for (var name in plugins) {
+        var group = plugins[name].group;
+        if (!group || plugins[name].name != name || (plugins[name].max_access && !isAdmin)) {
+            continue;
+        }
+
+        if (groups.indexOf(group) == -1) {
+            groups.push(group);
+        }
+    }
+
+    return groups;
+}
