@@ -39,6 +39,7 @@ Math:
  [convert]     - Convert number between number systems
 
 Net:
+ [idn]         - Convert domain between IDN and punycode
  [lookup]      - DNS lookup
  [ping]        - Ping host or IP
  [resolve]     - Resolve domain records
@@ -62,6 +63,9 @@ String operations:
 
 Time tools:
  [stamp]       - Convert timestamp to date or show current timestamp
+
+User tools:
+ [memo]        - Saving short message
  ```
 
 Plugins
