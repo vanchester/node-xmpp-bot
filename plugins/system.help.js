@@ -46,7 +46,8 @@ exports.help = {
                     }
 
                     var command = ' ' + padRight('[' + name + ']', maxCommandLength);
-                    answer += command + ' - ' + plugins[name].about + '\n';
+                    var aliases = plugins[name].aliases || [];
+                    answer += command + ' - ' + plugins[name].about + (aliases.length ? ' (aliases: ' + aliases.join(', ') + ')\n' : '\n');
                 }
             }
 

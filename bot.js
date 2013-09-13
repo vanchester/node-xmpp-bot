@@ -110,7 +110,6 @@ function addNumberAliases(plugins)
         var group = groups[n];
         for (var i in plugins) {
             if (plugins[i].group == group && i == plugins[i].name) {
-                console.log(plugins[i].name);
                 plugins[++commandAliasNumber] = plugins[i];
             }
         }
