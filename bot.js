@@ -5,6 +5,10 @@ var config = require ('./config.js'),
 
 var plugins = {};
 fs.readdirSync("./plugins").forEach(function(file) {
+    if (!/.js$/.test(file)) {
+        return;
+    }
+
     var p = require("./plugins/" + file);
     for (var name in p) {
         if (p[name].enabled != 1) {
