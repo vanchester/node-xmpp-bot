@@ -39,6 +39,7 @@ Math:
  [convert]     - Convert number between number systems
 
 Net:
+ [geoip]       - Return data about location by IP address
  [idn]         - Convert domain between IDN and punycode
  [lookup]      - DNS lookup
  [ping]        - Ping host or IP
