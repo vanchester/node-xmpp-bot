@@ -66,6 +66,9 @@ Time tools:
 
 User tools:
  [memo]        - Saving short message
+
+Weather:
+ [weather]     - Show weather (aliases: w, temp, temperature)
  ```
 
 Plugins
