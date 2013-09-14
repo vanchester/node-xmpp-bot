@@ -56,13 +56,14 @@ String operations:
  [reverse] - Reverse string (aliases: rev)
  [rmtag]   - Remove HTML-tags from string
  [sha1]    - SHA1 summ of string
- [shorturl] - URL shortener (aliases: short, urlshort, gl, url)
  [strlen]  - String length (aliases: len, length)
  [translate] - Translate string between Russian and Enlish (aliases: tr)
  [translit] - Translit russian letters in string
  [ucase]   - Change all letters of string to upper case (aliases: uppercase, upcase, uc)
  [urldec]  - Decode URL to string (aliases: urldecode)
  [urlenc]  - Encode string to URL (aliases: urlencode)
+ [shorturl] - URL shortener (aliases: short, urlshort, gl, url)
+ [unshort] - Unshort any URL created using URL shortening services
 
 Time tools:
  [stamp]   - Convert timestamp to date or show current timestamp (aliases: timestamp, time)
