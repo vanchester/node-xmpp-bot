@@ -1,6 +1,6 @@
 module.exports = {
 	jid: 'bot@jabber.ru',
-	password = 'password',
+	password: 'password',
 
     dbServer: 'localhost',
     dbPort: 27017,
