@@ -4,7 +4,7 @@ var http = require('http'),
 
 exports.weather = {
     name: 'weather',
-    group: 'Other',
+    group: 'Weather',
     about: 'Show weather',
     help: 'weather <CITY>',
     enabled: 1,
