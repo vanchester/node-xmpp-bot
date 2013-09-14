@@ -43,6 +43,7 @@ Net:
  [idn]     - Convert domain between IDN and punycode
  [lookup]  - DNS lookup
  [ping]    - Ping host or IP
+ [port]    - Check port for open state (aliases: checkport)
  [resolve] - Resolve domain records
 
 String operations:
