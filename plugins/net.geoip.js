@@ -3,7 +3,7 @@ var geoip = require('geoip-lite');
 exports.geoip = {
     name: 'geoip',
     group: 'Net',
-    about: 'Retru ndata about location by IP address',
+    about: 'Return data about location by IP address',
     help: 'geoip <IP>',
     enabled: 1,
     run: function(params) {
