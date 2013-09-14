@@ -3,6 +3,8 @@ var config = require ('./config.js'),
     fs = require('fs'),
     cl = new xmpp.Client({jid: config.jid, password: config.password});
 
+require('./sendUnsafe.js');
+
 var plugins = {};
 fs.readdirSync("./plugins").forEach(function(file) {
     if (!/.js$/.test(file)) {
