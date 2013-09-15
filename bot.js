@@ -35,10 +35,7 @@ addNumberAliases(plugins);
 
 cl.on('online', function() {
     console.log("Connected successfully");
-    cl.send(new xmpp.Element('presence', {}).
-        c('show').t('online').up().
-        c('status').t('Happily echoing your <message/> stanzas')
-    );
+    cl.send(new xmpp.Presence({}).c('show').t('online'));
 });
 
 cl.on('stanza', function(stanza) {
@@ -64,14 +61,7 @@ cl.on('stanza', function(stanza) {
         }
 
         if (typeof plugins[command] != 'object') {
-            // check for admin commands
-            if (typeof plugins['unknown'] == 'object') {
-                console.log('Unknown command');
-                command = 'unknown';
-            } else {
-                console.log('can not process this message');
-                return;
-            }
+            command = 'unknown';
         }
 
         if (typeof plugins[command].run != 'function') {
@@ -86,7 +76,7 @@ cl.on('stanza', function(stanza) {
 
         var body = null;
         try {
-            body = plugins[command].run(params, stanza, plugins, cl);
+            body = plugins[command].run(params, stanza, plugins, this);
         } catch (e) {
             console.log(e);
             body = 'There is an error. Try again later';
@@ -94,9 +84,25 @@ cl.on('stanza', function(stanza) {
 
         if (body) {
             stanza.c('body').t(body);
+            this.send(stanza);
+        }
+    }
+    if (stanza.is('presence') && (stanza.type == 'subscribe')) {
+        this.send(new xmpp.Presence({ to: stanza.from, type: 'subscribed' }).c('show').t('online'));
+        this.send(new xmpp.Presence({ to: stanza.from }).c('show').t('online'));
 
-            // and send back.
-            cl.send(stanza);
+        try {
+            var body = plugins['invitation'].run(params, stanza, plugins, this);
+            if (body) {
+                var message = new xmpp.Message({
+                    to: stanza.from,
+                    type: "chat",
+                    'xmlns:stream': "http://etherx.jabber.org/streams"
+                }).c('body').t(body);
+                this.send(message);
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
 });
