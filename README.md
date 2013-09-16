@@ -30,6 +30,7 @@ Administration:
  [exit]    - Close bot
  [load]    - Load/reload plugin
  [stat]    - Server statistic (aliases: stat, os)
+ [status]  - Change bot status and set status message
  [unload]  - Unload plugin
  [update]  - Update bot code from repository
 
