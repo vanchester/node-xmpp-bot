@@ -7,6 +7,7 @@ exports.load = {
     help: 'load <FILE-NAME>',
     enabled: 1,
     max_access: 1,
+    aliases: ['reload'],
     run: function(params, stanza, plugins, client) {
         if (params[0]) {
             params[0] = params[0].replace('/', '').replace('\\', '');
