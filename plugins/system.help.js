@@ -15,17 +15,10 @@ exports.help = {
             isAdmin = true;
         }
 
-        // @todo fix when user settings will be ready
-        var showNumbers = false;
-        if (params[0] == 'num') {
-            showNumbers = true;
-            params.shift();
-        }
-
         var answer = '\nList of available commands:\n';
         if (!params.length) {
             var groups = plugins.getGroups(isAdmin);
-            var maxCommandLength = !showNumbers ? getMaxCommandLength(plugins, isAdmin) : 0;
+            var maxCommandLength = getMaxCommandLength(plugins, isAdmin) + 3;
 
             for (var i in groups) {
                 answer += '\n' + groups[i] + ':\n';
@@ -35,22 +28,15 @@ exports.help = {
                         continue;
                     }
 
-                    if (showNumbers) {
-                        if (!/^[\d]+$/.test(name)) {
-                            continue;
-                        }
-                    } else {
-                        if (plugins[name].name != name) {
-                            continue;
-                        }
+                    if (plugins[name].name != name) {
+                        continue;
                     }
 
-                    var command = ' ' + padRight('[' + name + ']', maxCommandLength);
-                    var aliases = plugins[name].aliases || [];
-                    if (showNumbers) {
-                        aliases.push(plugins[name].name);
-                    }
-                    answer += command + ' - ' + plugins[name].about + (aliases.length ? ' (aliases: ' + aliases.join(', ') + ')\n' : '\n');
+                    var command = ' ' + (plugins[name].numberAlias ? ' ' + plugins[name].numberAlias + ' ' : '');
+                    command += padRight('[' + name + ']', maxCommandLength);
+
+                    var aliases = plugins[name].aliases ? plugins[name].aliases.join(', ') : '';
+                    answer += command + ' - ' + plugins[name].about + (aliases ? ' (aliases: ' + aliases + ')\n' : '\n');
                 }
             }
 
@@ -62,18 +48,15 @@ exports.help = {
                     continue;
                 }
 
-                if (showNumbers) {
-                    if (!/^[\d]+$/.test(name)) {
-                        continue;
-                    }
-                } else {
-                    if (plugins[name].name != name) {
-                        continue;
-                    }
+                if (plugins[name].name != name) {
+                    continue;
                 }
 
-                var command = padRight('[' + name + ']', maxCommandLength);
-                answer += command + ' - ' + plugins[name].about + '\n';
+                var command = ' ' + (plugins[name].numberAlias ? ' ' + plugins[name].numberAlias + ' ' : '');
+                command += padRight('[' + name + ']', maxCommandLength);
+
+                var aliases = plugins[name].aliases.join(', ');
+                answer += command + ' - ' + plugins[name].about + (aliases ? ' (aliases: ' + aliases + ')\n' : '\n');
             }
 
         } else {

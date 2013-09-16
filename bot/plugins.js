@@ -61,6 +61,7 @@ function addNumberAliases(plugins)
         for (var i in plugins) {
             if (plugins[i].group == group && i == plugins[i].name) {
                 plugins[++commandAliasNumber] = plugins[i];
+                plugins[i].numberAlias = commandAliasNumber;
             }
         }
     }
@@ -71,6 +72,7 @@ function addNumberAliases(plugins)
     for (var i in plugins) {
         if (!plugins[i].group && plugins[i].name == i) {
             plugins[++commandAliasNumber] = plugins[i];
+            plugins[i].numberAlias = commandAliasNumber;
         }
     }
 }
