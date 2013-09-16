@@ -1,7 +1,8 @@
 var config = require ('./config.js'),
     xmpp = require('node-xmpp'),
     fs = require('fs'),
-    cl = new xmpp.Client({jid: config.jid, password: config.password});
+    cl = new xmpp.Client({jid: config.jid, password: config.password}),
+    Plugins = require('./bot/plugins.js');
 
 require('./bot/sendUnsafe.js');
 
@@ -10,33 +11,8 @@ cl.on('online', function() {
     cl.send(new xmpp.Presence({}).c('show').t('online'));
 });
 
-var plugins = {};
-fs.readdirSync("./plugins").forEach(function(file) {
-    if (!/.js$/.test(file)) {
-        return;
-    }
-
-    var p = require("./plugins/" + file);
-    for (var name in p) {
-        if (p[name].enabled != 1) {
-            continue;
-        }
-
-        plugins[name.toLowerCase()] = p[name];
-
-        if (typeof p[name].afterLoad == 'function') {
-            p[name].afterLoad(cl);
-        }
-
-        if (p[name].aliases) {
-            for (var i in p[name].aliases) {
-                plugins[p[name].aliases[i].toLowerCase()] = p[name];
-            }
-        }
-    }
-});
-
-addNumberAliases(plugins);
+// init plugins should be after on('online')
+var plugins = new Plugins(__dirname + '/plugins', cl);
 
 cl.on('stanza', function(stanza) {
     if (stanza.is('message') && stanza.attrs.type !== 'error') { // Important: never reply to errors!
@@ -92,46 +68,3 @@ cl.on('stanza', function(stanza) {
 cl.on('error', function(e) {
     console.error(e);
 });
-
-function addNumberAliases(plugins)
-{
-    var groups = getGroups(plugins);
-    var commandAliasNumber;
-    var groupAliasNumber = 0;
-    for (var n in groups) {
-        groupAliasNumber += 100;
-        commandAliasNumber = groupAliasNumber;
-        var group = groups[n];
-        for (var i in plugins) {
-            if (plugins[i].group == group && i == plugins[i].name) {
-                plugins[++commandAliasNumber] = plugins[i];
-            }
-        }
-    }
-
-    // plugins without group
-    groupAliasNumber += 100;
-    commandAliasNumber = groupAliasNumber;
-    for (var i in plugins) {
-        if (!plugins[i].group && plugins[i].name == i) {
-            plugins[++commandAliasNumber] = plugins[i];
-        }
-    }
-}
-
-function getGroups(plugins, isAdmin)
-{
-    var groups = [];
-    for (var name in plugins) {
-        var group = plugins[name].group;
-        if (!group || plugins[name].name != name || (plugins[name].max_access && !isAdmin)) {
-            continue;
-        }
-
-        if (groups.indexOf(group) == -1) {
-            groups.push(group);
-        }
-    }
-
-    return groups;
-}

@@ -24,7 +24,7 @@ exports.help = {
 
         var answer = '\nList of available commands:\n';
         if (!params.length) {
-            var groups = getGroups(plugins, isAdmin);
+            var groups = plugins.getGroups(isAdmin);
             var maxCommandLength = !showNumbers ? getMaxCommandLength(plugins, isAdmin) : 0;
 
             for (var i in groups) {
@@ -87,23 +87,6 @@ exports.help = {
         return answer ? answer : 'There are no loaded plugins';
     }
 };
-
-function getGroups(plugins, isAdmin)
-{
-    var groups = [];
-    for (var name in plugins) {
-        var group = plugins[name].group;
-        if (!group || plugins[name].name != name || (plugins[name].max_access && !isAdmin)) {
-            continue;
-        }
-
-        if (groups.indexOf(group) == -1) {
-            groups.push(group);
-        }
-    }
-
-    return groups;
-}
 
 function getMaxCommandLength(plugins, isAdmin)
 {
