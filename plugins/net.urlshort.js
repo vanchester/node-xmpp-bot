@@ -1,6 +1,6 @@
 exports.shorturl = {
     name: 'shorturl',
-    group: 'String operations',
+    group: 'Net',
     about: 'URL shortener',
     help: 'shorturl <STRING>',
     enabled: 1,

@@ -1,6 +1,6 @@
 exports.urldec = {
     name: 'urldec',
-    group: 'String operations',
+    group: 'Net',
     about: 'Decode URL to string',
     help: 'urldec <URL>',
     enabled: 1,

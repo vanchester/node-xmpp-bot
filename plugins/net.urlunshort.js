@@ -4,7 +4,7 @@ var http = require('http'),
 
 exports.unshort = {
     name: 'unshort',
-    group: 'String operations',
+    group: 'Net',
     about: 'Unshort any URL created using URL shortening services',
     help: 'unshort <SHORT-URL>',
     enabled: 1,
