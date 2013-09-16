@@ -3,6 +3,8 @@ node-xmpp-bot
 
 XMPP bot on Node.js, based on [node-xmpp](https://github.com/astro/node-xmpp)
 
+Demo bot: bot@vanchester.ru
+
 Requirements
 ------------
 * Node.js >= 0.4.0
