@@ -32,7 +32,7 @@ exports.help = {
                         continue;
                     }
 
-                    var command = ' ' + (plugins[name].numberAlias ? ' ' + plugins[name].numberAlias + ' ' : '');
+                    var command = ' ' + (plugins[name].numberAlias ? plugins[name].numberAlias + ' ' : '');
                     command += padRight('[' + name + ']', maxCommandLength);
 
                     var aliases = plugins[name].aliases ? plugins[name].aliases.join(', ') : '';
