@@ -87,24 +87,6 @@ cl.on('stanza', function(stanza) {
             this.send(stanza);
         }
     }
-    if (stanza.is('presence') && (stanza.type == 'subscribe')) {
-        this.send(new xmpp.Presence({ to: stanza.from, type: 'subscribed' }).c('show').t('online'));
-        this.send(new xmpp.Presence({ to: stanza.from }).c('show').t('online'));
-
-        try {
-            var body = plugins['invitation'].run(params, stanza, plugins, this);
-            if (body) {
-                var message = new xmpp.Message({
-                    to: stanza.from,
-                    type: "chat",
-                    'xmlns:stream': "http://etherx.jabber.org/streams"
-                }).c('body').t(body);
-                this.send(message);
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
 });
 
 cl.on('error', function(e) {
