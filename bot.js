@@ -5,6 +5,11 @@ var config = require ('./config.js'),
 
 require('./sendUnsafe.js');
 
+cl.on('online', function() {
+    console.log("Connected successfully");
+    cl.send(new xmpp.Presence({}).c('show').t('online'));
+});
+
 var plugins = {};
 fs.readdirSync("./plugins").forEach(function(file) {
     if (!/.js$/.test(file)) {
@@ -20,7 +25,7 @@ fs.readdirSync("./plugins").forEach(function(file) {
         plugins[name.toLowerCase()] = p[name];
 
         if (typeof p[name].afterLoad == 'function') {
-            p[name].afterLoad();
+            p[name].afterLoad(cl);
         }
 
         if (p[name].aliases) {
@@ -32,11 +37,6 @@ fs.readdirSync("./plugins").forEach(function(file) {
 });
 
 addNumberAliases(plugins);
-
-cl.on('online', function() {
-    console.log("Connected successfully");
-    cl.send(new xmpp.Presence({}).c('show').t('online'));
-});
 
 cl.on('stanza', function(stanza) {
     if (stanza.is('message') && stanza.attrs.type !== 'error') { // Important: never reply to errors!
