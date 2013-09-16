@@ -3,7 +3,7 @@ var config = require ('./config.js'),
     fs = require('fs'),
     cl = new xmpp.Client({jid: config.jid, password: config.password});
 
-require('./sendUnsafe.js');
+require('./bot/sendUnsafe.js');
 
 cl.on('online', function() {
     console.log("Connected successfully");

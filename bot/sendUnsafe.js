@@ -1,4 +1,4 @@
-var Element = require('./node_modules/node-xmpp/node_modules/ltx').Element;
+var Element = require('../node_modules/node-xmpp/node_modules/ltx').Element;
 var Client = require('node-xmpp').Client;
 
 var write = function(writer) {
