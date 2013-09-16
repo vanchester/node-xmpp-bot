@@ -4,7 +4,7 @@ exports.reverse = {
     about: 'Reverse string',
     help: 'reverse <STRING>',
     enabled: 1,
-    aliases: ['rev'],
+    aliases: ['rev', 'invert'],
     run: function(params) {
         if (params[0]) {
             return params.join(' ').split('').reverse().join('');

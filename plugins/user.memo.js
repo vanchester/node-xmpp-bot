@@ -8,6 +8,7 @@ exports.memo = {
     about: 'Saving short message',
     help: 'memo - list all your saved notes\nmemo <NAME> - show saved note <NAME>\nmemo add <NAME> <TEXT> - save <TEXT> with name <NAME>\nmemo del <NAME>',
     enabled: 1,
+    aliases: ['invert'],
     afterLoad: function () {
         var config = require('../config.js');
         MongoClient.connect('mongodb://' + config.dbServer + ':' + (config.dbPort | 27017) + '/' + config.dbName, function (err, db) {

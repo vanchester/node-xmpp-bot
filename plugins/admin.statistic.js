@@ -9,7 +9,7 @@ exports.stat = {
     help: 'stat',
     enabled: 1,
     max_access: 1,
-    aliases: ['stat', 'os'],
+    aliases: ['statistic', 'os'],
     run: function() {
         var message = 'System information for ' + os.hostname() + '\n';
         message += 'Uptime: ' + secondsToString(os.uptime()) + '\n';
