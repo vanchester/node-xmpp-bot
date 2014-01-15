@@ -9,6 +9,8 @@ Requirements
 ------------
 * Node.js >= 0.4.0
 * npm
+* node-gyp
+* libicu-devel
 * MongoDB
 
 Installation
