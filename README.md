@@ -12,6 +12,7 @@ Requirements
 * node-gyp
 * libicu-devel
 * MongoDB
+* screen
 
 Installation
 ------------
