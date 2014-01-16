@@ -1,7 +1,7 @@
 var config = require ('./config.js'),
     xmpp = require('node-xmpp'),
     fs = require('fs'),
-    cl = new xmpp.Client({jid: config.jid, password: config.password}),
+    cl = new xmpp.Client({jid: config.jid, password: config.password, reconnect: config.reconnect}),
     Plugins = require('./bot/plugins.js');
 
 require('./bot/sendUnsafe.js');

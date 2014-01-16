@@ -1,10 +1,11 @@
 module.exports = {
 	jid: 'bot@jabber.ru',
 	password: 'password',
+	reconnect: true,
 
-    dbServer: 'localhost',
-    dbPort: 27017,
-    dbName: 'node-bot',
+	dbServer: 'localhost',
+	dbPort: 27017,
+	dbName: 'node-bot',
 
 	adminJID: ['admin@jabber.ru'],
 
