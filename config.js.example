@@ -9,5 +9,5 @@ module.exports = {
 
 	adminJID: ['admin@jabber.ru'],
 
-	googlKey: ''
+	googlKey: '' // https://developers.google.com/translate/v2/getting_started?hl=ru
 };
