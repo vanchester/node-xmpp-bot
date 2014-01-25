@@ -8,7 +8,7 @@ exports.update = {
     enabled: 1,
     max_access: 1,
     run: function(params, stanza, plugins, client) {
-        exec('git pull', function (error, stdout, stderr) {
+        exec('git pull && npm install', function (error, stdout, stderr) {
             var message = error ? sdterr : stdout;
 
             stanza.c('body').t(message);
