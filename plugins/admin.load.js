@@ -37,6 +37,9 @@ exports.load = {
                                 plugins[p[name].aliases[i]] = p[name];
                             }
                         }
+                        if (typeof plugins[name].afterLoad == 'function') {
+                            plugins[name].afterLoad(client);
+                        }
                     }
                     stanza.c('body').t(message);
                 }
