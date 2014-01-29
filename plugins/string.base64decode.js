@@ -8,9 +8,16 @@ exports.b64dec = {
     run: function(params) {
         if (params[0]) {
             try {
-                var buffer = new Buffer(params.join(' ').replace(/[^=]*$/, ''), 'base64');
+                if (/[^\w\d\/\+=]/i.test(params[0].trim())) {
+                    return 'Wrong code format';
+                }
+
+                var buffer = new Buffer(params.join(' ').replace(/[=]+(.+)/, ''), 'base64');
                 if (buffer) {
-                    return buffer.toString('utf8');
+                    var msg = buffer.toString('utf8');
+                    return (/[^\u0000-\u0800]/.test(msg))
+                        ? 'Can not decode string'
+                        : msg;
                 } else {
                     return 'Can not decode string';
                 }
