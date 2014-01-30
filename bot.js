@@ -14,7 +14,8 @@ cl.on('online', function() {
 // init plugins should be after on('online')
 var plugins = new Plugins(__dirname + '/plugins', cl);
 
-cl.on('stanza', function(stanza) {
+cl.on('stanza', function(stanzaOrig) {
+    var stanza = stanzaOrig.clone();
     if (stanza.is('message') && stanza.attrs.type !== 'error') { // Important: never reply to errors!
 
         var message = stanza.getChildText('body');

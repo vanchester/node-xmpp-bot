@@ -2,11 +2,11 @@ var os = require('os'),
     process = require('process'),
     util = require('util');
 
-exports.stat = {
-    name: 'stat',
+exports.st = {
+    name: 'st',
     group: 'Administration',
     about: 'Server statistic',
-    help: 'stat',
+    help: 'st',
     enabled: 1,
     max_access: 1,
     aliases: ['statistic', 'os'],
