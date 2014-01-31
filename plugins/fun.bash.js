@@ -7,7 +7,7 @@ var request = require('request'),
 exports.bash = {
     name: 'bash',
     group: 'Fun',
-    about: 'Show bash quotes',
+    about: 'Show quotes from bash.im',
     help: 'bash - show random quote,\nbash <NUMBER> - show fresh quote NUMBER',
     enabled: 1,
     aliases: [],
