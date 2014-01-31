@@ -133,6 +133,9 @@ exports.rss = {
 
 function getFeedAndSendArticles(feedData, collection, client)
 {
+    if (!feedData.url) {
+        return;
+    }
     request(feedData.url).pipe(new FeedParser())
         .on('readable', function() {
             var stream = this,
