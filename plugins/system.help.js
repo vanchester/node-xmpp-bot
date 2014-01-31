@@ -21,8 +21,7 @@ exports.help = {
             var maxCommandLength = getMaxCommandLength(plugins, isAdmin) + 3;
 
             for (var i in groups) {
-                answer += '\n' + groups[i] + ':\n';
-
+                var commands = '';
                 for (var name in plugins) {
                     if (plugins[name].group != groups[i] || (plugins[name].max_access && !isAdmin) || !plugins[name].about) {
                         continue;
@@ -36,11 +35,15 @@ exports.help = {
                     command += padRight('[' + name + ']', maxCommandLength);
 
                     var aliases = plugins[name].aliases ? plugins[name].aliases.join(', ') : '';
-                    answer += command + ' - ' + plugins[name].about + (aliases ? ' (aliases: ' + aliases + ')\n' : '\n');
+                    commands += command + ' - ' + plugins[name].about + (aliases ? ' (aliases: ' + aliases + ')\n' : '\n');
+                }
+                if (commands) {
+                    answer += '\n' + groups[i] + ':\n' + commands;
                 }
             }
 
             answer += '\n';
+
             // show commands without group
             for (var name in plugins) {
                 if (plugins[name].group || (plugins[name].max_access && !isAdmin) || !plugins[name].about)
@@ -67,7 +70,7 @@ exports.help = {
             }
         }
 
-        return answer ? answer : 'There are no loaded plugins';
+        return answer ? answer + 'Type "help command" for more information about command' : 'There are no loaded plugins';
     }
 };
 
