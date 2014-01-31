@@ -1,13 +1,40 @@
 module.exports = {
-	jid: 'bot@jabber.ru',
-	password: 'password',
-	reconnect: true,
+    jid: 'bot@jabber.ru',
+    password: 'password',
+    reconnect: true,
 
-	dbServer: 'localhost',
-	dbPort: 27017,
-	dbName: 'node-bot',
+    dbServer: 'localhost',
+    dbPort: 27017,
+    dbName: 'node-bot',
 
-	adminJID: ['admin@jabber.ru'],
+    adminJID: ['admin@jabber.ru'],
 
-	googlKey: '' // https://developers.google.com/translate/v2/getting_started?hl=ru
+    googlKey: '', // https://developers.google.com/translate/v2/getting_started?hl=ru
+
+    todoColors: "export NONE='';\n" +
+                "export BLACK=':black:';\n" +
+                "export RED=':red:';\n" +
+                "export GREEN=':green:';\n" +
+                "export BROWN=':brown:';\n" +
+                "export BLUE=':blue:';\n" +
+                "export PURPLE=':purple:';\n" +
+                "export CYAN=':cyan:';\n" +
+                "export LIGHT_GREY=':lightgrey:';\n" +
+                "export DARK_GREY=':grey:';\n" +
+                "export LIGHT_RED=':lightred:';\n" +
+                "export LIGHT_GREEN=':lightgreen:';\n" +
+                "export YELLOW=':orange:';\n" +
+                "export LIGHT_BLUE=':blue:';\n" +
+                "export LIGHT_PURPLE=':purple:';\n" +
+                "export LIGHT_CYAN=':cyan:';\n" +
+                "export WHITE=':black:';\n" +
+                "export DEFAULT='';\n" +
+                "export PRI_A=:red:;\n" +
+                "export PRI_B=:green:;\n" +
+                "export PRI_C=:blue:;\n" +
+                "export PRI_D=:orange:;\n" +
+                "export PRI_E=:brown:;\n" +
+                "export PRI_F=:grey:;\n" +
+                "export PRI_X=:black:;\n" +
+                "export COLOR_DONE=:gray:;\n"
 };
