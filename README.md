@@ -40,6 +40,7 @@ Administration:
  [status]     - Change bot status and set status message
  [unload]     - Unload plugin
  [update]     - Update bot code from repository
+ [version]    - Show version of the bot (aliases: ver)
 
 Fun:
  101 [bash]       - Show quotes from bash.im
