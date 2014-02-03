@@ -21,7 +21,8 @@
     "feedparser": ">= 0.16.5",
     "fibers": ">= 1.0.1",
     "mongo-sync": ">= 0.1.2",
-    "todo.txt-node": ">= 0.1.0"
+    "todo.txt-node": ">= 0.1.0",
+    "node-static": ">= 0.7.3"
   },
   "repository": {
     "type": "git",

@@ -36,5 +36,9 @@ module.exports = {
                 "export PRI_E=:brown:;\n" +
                 "export PRI_F=:grey:;\n" +
                 "export PRI_X=:black:;\n" +
-                "export COLOR_DONE=:gray:;\n"
+                "export COLOR_DONE=:gray:;\n",
+
+    // status plugin settings
+    statusPluginPort: 8282,
+    statusPluginUrl: 'http://somedomain.com'
 };
