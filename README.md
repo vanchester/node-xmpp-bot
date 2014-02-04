@@ -33,8 +33,6 @@ Supported commands
  ```
 Administration:
  [exit]       - Close bot
- [join]       - Join to groupchat (aliases: conf)
- [leave]      - Leave a groupchat (aliases: conf)
  [load]       - Load/reload plugin (aliases: reload)
  [st]         - Server statistic (aliases: statistic, os)
  [status]     - Change bot status and set status message
