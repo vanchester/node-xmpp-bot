@@ -54,7 +54,7 @@ Net:
  301 [geoip]      - Return data about location by IP address
  302 [idn]        - Convert domain between IDN and punycode
  303 [lookup]     - DNS lookup
- 304 [ping]       - Ping host or IP
+ 304 [ping]       - Ping host or IP, or simple pong without params
  305 [port]       - Check port for open state (aliases: checkport)
  306 [resolve]    - Resolve domain records
  307 [urldec]     - Decode URL to string (aliases: urldecode)
@@ -84,6 +84,7 @@ User tools:
  601 [memo]       - Saving short message (aliases: note)
  602 [rss]        - Monitor RSS feed
  603 [todo]       - Manage your TODOs (compatible with todo.txt-cli format) (aliases: t)
+ 604 [webstatus]  - JID's status for web (aliases: web-status)
 
 Weather:
  701 [weather]    - Show weather (aliases: w, temp, temperature)
