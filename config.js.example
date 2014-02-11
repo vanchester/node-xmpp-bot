@@ -40,5 +40,10 @@ module.exports = {
 
     // status plugin settings
     statusPluginPort: 8282,
-    statusPluginUrl: 'http://somedomain.com'
+    statusPluginUrl: 'http://somedomain.com',
+
+    twitterAPIkey: '',
+    twitterAPIsecret: '',
+    twitterAccessToken: '',
+    twitterAccessTokenSecret: ''
 };

@@ -81,10 +81,11 @@ Time tools:
  501 [stamp]      - Convert timestamp to date or show current timestamp (aliases: timestamp, time)
 
 User tools:
- 601 [memo]       - Saving short message (aliases: note)
- 602 [rss]        - Monitor RSS feed
- 603 [todo]       - Manage your TODOs (compatible with todo.txt-cli format) (aliases: t)
- 604 [webstatus]  - JID's status for web (aliases: web-status)
+ 601 [follow]     - Monitor tweets (aliases: fl, fw)
+ 602 [memo]       - Saving short message (aliases: note)
+ 603 [rss]        - Monitor RSS feed
+ 604 [todo]       - Manage your TODOs (compatible with todo.txt-cli format) (aliases: t)
+ 605 [webstatus]  - JID's status for web (aliases: web-status)
 
 Weather:
  701 [weather]    - Show weather (aliases: w, temp, temperature)
