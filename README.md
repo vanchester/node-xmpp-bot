@@ -64,16 +64,18 @@ String operations:
  401 [b64dec]     - Decode base64 to string (aliases: base64dec, base64decode, b64d)
  402 [b64enc]     - Encode string to base64 (aliases: base64enc, base64encode, b64e)
  403 [crc32]      - CRC32 summ of string
- 404 [lcase]      - Change all letters of string to lower case (aliases: lowercase, locase, lc)
- 405 [md5]        - MD5 summ of string
- 406 [morze]      - Convert string between letters and Morze symbols
- 407 [reverse]    - Reverse string (aliases: rev, invert)
- 408 [rmtag]      - Remove HTML-tags from string
- 409 [sha1]       - SHA1 summ of string
- 410 [strlen]     - String length (aliases: len, length)
- 411 [translate]  - Translate string between Russian and Enlish (aliases: tr)
- 412 [translit]   - Translit russian letters in string
- 413 [ucase]      - Change all letters of string to upper case (aliases: uppercase, upcase, uc)
+ 404 [entdec]     - Decode HTML entities (aliases: entdecode, entitiesdecode, entitiesdec)
+ 405 [entenc]     - Encode HTML entities (aliases: entencode, entitiesencode, entitiesenc)
+ 406 [lcase]      - Change all letters of string to lower case (aliases: lowercase, locase, lc)
+ 407 [md5]        - MD5 summ of string
+ 408 [morze]      - Convert string between letters and Morze symbols
+ 409 [reverse]    - Reverse string (aliases: rev, invert)
+ 410 [rmtag]      - Remove HTML-tags from string
+ 411 [sha1]       - SHA1 summ of string
+ 412 [strlen]     - String length (aliases: len, length)
+ 413 [translate]  - Translate string between Russian and Enlish (aliases: tr)
+ 414 [translit]   - Translit russian letters in string
+ 415 [ucase]      - Change all letters of string to upper case (aliases: uppercase, upcase, uc)
 
 Time tools:
  501 [stamp]      - Convert timestamp to date or show current timestamp (aliases: timestamp, time)
