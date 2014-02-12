@@ -39,11 +39,5 @@ function strike(text, type)
         case 7: uni = '\u0332'; break;
     }
 
-    var result = '';
-    for (var i = 0; i < text.length; i++) {
-        var c = text.charAt(i);
-        var r = c + uni;
-        result += r;
-    }
-    return result;
+    return text.replace(/(.)/g, '$1' + uni);
 }
