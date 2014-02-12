@@ -74,7 +74,7 @@ String operations:
  411 [sha1]       - SHA1 summ of string
  412 [strikeout]  - Strikethrough string (aliases: strike)
  413 [strlen]     - String length (aliases: len, length)
- 414 [translate]  - Translate string between Russian and Enlish (aliases: tr)
+ 414 [translate]  - Translate string between Russian and English (aliases: tr)
  415 [translit]   - Translit russian letters in string
  416 [ucase]      - Change all letters of string to upper case (aliases: uppercase, upcase, uc)
 
