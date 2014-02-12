@@ -72,10 +72,11 @@ String operations:
  409 [reverse]    - Reverse string (aliases: rev, invert)
  410 [rmtag]      - Remove HTML-tags from string
  411 [sha1]       - SHA1 summ of string
- 412 [strlen]     - String length (aliases: len, length)
- 413 [translate]  - Translate string between Russian and Enlish (aliases: tr)
- 414 [translit]   - Translit russian letters in string
- 415 [ucase]      - Change all letters of string to upper case (aliases: uppercase, upcase, uc)
+ 412 [strikeout]  - Strikethrough string (aliases: strike)
+ 413 [strlen]     - String length (aliases: len, length)
+ 414 [translate]  - Translate string between Russian and Enlish (aliases: tr)
+ 415 [translit]   - Translit russian letters in string
+ 416 [ucase]      - Change all letters of string to upper case (aliases: uppercase, upcase, uc)
 
 Time tools:
  501 [stamp]      - Convert timestamp to date or show current timestamp (aliases: timestamp, time)
