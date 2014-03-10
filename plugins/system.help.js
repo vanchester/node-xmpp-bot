@@ -62,15 +62,18 @@ exports.help = {
                 answer += command + ' - ' + plugins[name].about + (aliases ? ' (aliases: ' + aliases + ')\n' : '\n');
             }
 
+            return answer ? answer + '\nType "help command" for more information about command' : 'There are no loaded plugins';
+
         } else {
             if (typeof plugins[params[0]] == 'undefined') {
                 answer = 'Command ' + params[0] + ' not found';
             } else {
                 answer = plugins[params[0]].help ? plugins[params[0]].help : plugins[params[0]].about;
             }
+
+            return answer;
         }
 
-        return answer ? answer + 'Type "help command" for more information about command' : 'There are no loaded plugins';
     }
 };
 
