@@ -141,31 +141,36 @@ function getFeedAndSendArticles(feedData, collection, client)
             .on('readable', function() {
                 var stream = this,
                     item;
-                while (item = stream.read()) {
-                    (function (item, feedData) {
-                        collection.findOne({'jid': feedData.jid, 'url': feedData.url, 'sent_articles': item.guid}, function (err, dbItem) {
-                            if (err) throw err;
+                try {
+                    while (item = stream.read()) {
+                        (function(item, feedData) {
+                            collection.findOne({'jid': feedData.jid, 'url': feedData.url, 'sent_articles': item.guid}, function(err, dbItem) {
+                                if (err) throw err;
 
-                            // if this news already sent, return
-                            if (dbItem) {
-                                return;
-                            }
+                                // if this news already sent, return
+                                if (dbItem) {
+                                    return;
+                                }
 
-                            var stanza = new xmpp.Element(
-                                'message',
-                                { to: feedData.jid, type: 'chat' }
-                            );
-                            var descr = item.description.replace(/\<br[^\>]*\>/g, '\n').replace(/\<[^\>]+\>/g, '');
-                            stanza.c('body').t([item.pubDate, item.title, descr, item.author, item.link].join('\n'));
-                            client.send(stanza);
+                                var stanza = new xmpp.Element(
+                                    'message',
+                                    { to: feedData.jid, type: 'chat' }
+                                );
+                                var descr = item.description.replace(/\<br[^\>]*\>/g, '\n').replace(/\<[^\>]+\>/g, '');
+                                stanza.c('body').t([item.pubDate, item.title, descr, item.author, item.link].join('\n'));
+                                client.send(stanza);
 
-                            collection.update({'jid': feedData.jid, 'url': feedData.url}, {'$push': {'sent_articles': item.guid}}, function () {});
-                        });
-                    })(item, feedData);
+                                collection.update({'jid': feedData.jid, 'url': feedData.url}, {'$push': {'sent_articles': item.guid}}, function() {
+                                });
+                            });
+                        })(item, feedData);
+                    }
+                } catch (e) {
+                    console.log(e);
                 }
             });
     } catch (e) {
-        console.log();
+        console.log(e);
     }
 }
 
