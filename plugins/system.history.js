@@ -33,6 +33,12 @@ exports.history = {
                         return;
                     }
 
+                    // skip command to repeat last command
+                    var command = message.split(' ').shift().toLowerCase();
+                    if (['!!', '!', 'rt', 'repeat'].indexOf(command) >= 0) {
+                        return;
+                    }
+
                     db.collection('history').insert({
                         'date': new Date(),
                         'jid': jidFrom.user + '@' + jidFrom.domain,

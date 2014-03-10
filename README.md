@@ -84,9 +84,10 @@ Time tools:
 User tools:
  601 [follow]     - Monitor tweets (aliases: fl, fw)
  602 [memo]       - Saving short message (aliases: note)
- 603 [rss]        - Monitor RSS feed
- 604 [todo]       - Manage your TODOs (compatible with todo.txt-cli format) (aliases: t)
- 605 [webstatus]  - JID's status for web (aliases: web-status)
+ 603 [repeat]     - Repeat last command (aliases: !!, !, rt)
+ 604 [rss]        - Monitor RSS feed
+ 605 [todo]       - Manage your TODOs (compatible with todo.txt-cli format) (aliases: t)
+ 606 [webstatus]  - JID's status for web (aliases: web-status)
 
 Weather:
  701 [weather]    - Show weather (aliases: w, temp, temperature)
