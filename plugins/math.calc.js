@@ -1,5 +1,4 @@
-var mathjs = require('mathjs'),
-    math = mathjs();
+var math = require('mathjs');
 
 exports.calc = {
     name: 'calc',
