@@ -42,6 +42,10 @@ module.exports = {
     statusPluginPort: 8282,
     statusPluginUrl: 'http://somedomain.com',
 
+    // webmessage plugin settings
+    statusPluginPort: 8283,
+    statusPluginUrl: 'http://somedomain.com',
+
     twitterAPIkey: '',
     twitterAPIsecret: '',
     twitterAccessToken: '',
