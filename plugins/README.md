@@ -30,6 +30,6 @@ where
 * `run: function (params, stanza, plugins, client) {}` - logic of plugin. **Params** contain all sended words (as array), **stanza** is the object of answer, **plugins** is the container of all loaded plugins, **client** - XMPP client object
 
 
-**Run** can return string or null. If it return the string, this string will be sent to recipient. 
-Also, message can be sent via **stranza** from plugin's body: `stranza.c('body').t('Hello!'); client.send(stranza);`. 
+**Run** can return string or null. If it return the string, this string will be sent to recipient.
+Also, message can be sent via **stanza** from plugin's body: `stanza.c('body').t('Hello!'); client.send(stanza);`. 
 See all examples in plugins files
